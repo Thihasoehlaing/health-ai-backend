@@ -1,4 +1,3 @@
-# app/schemas/appointments.py
 from datetime import datetime
 from uuid import UUID
 from typing import Optional

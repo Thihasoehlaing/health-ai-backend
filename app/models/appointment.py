@@ -1,4 +1,3 @@
-# app/models/appointment.py
 import uuid
 from enum import Enum
 from sqlalchemy import (

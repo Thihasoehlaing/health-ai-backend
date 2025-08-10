@@ -1,35 +1,32 @@
 from logging.config import fileConfig
 from alembic import context
 from sqlalchemy import engine_from_config, pool
-import os
 import sys
 from pathlib import Path
 
-# --- Ensure 'app' is importable no matter where alembic is run from ---
-PROJECT_ROOT = Path(__file__).resolve().parents[1]  # points to your project root
+# --- Make sure "app" is importable no matter where you run alembic ---
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-# Alembic Config
+# Alembic config
 config = context.config
 if config.config_file_name:
     fileConfig(config.config_file_name)
 
-# Build DB URL from app settings
+# Pull DB URL from your settings (.env)
 from app.config import settings
-db_url = settings.postgres_url
-config.set_main_option("sqlalchemy.url", db_url)
+config.set_main_option("sqlalchemy.url", settings.postgres_url)
 
-# Import models' metadata
+# Import Base and all models so metadata is populated
 from app.db.pg import Base
-# Import all models so metadata is populated
 from app.models import department, doctor, patient, appointment, faq, admin, kiosk_device, audit_log
 
 target_metadata = Base.metadata
 
-def run_migrations_offline():
+def run_migrations_offline() -> None:
     context.configure(
-        url=db_url,
+        url=settings.postgres_url,
         target_metadata=target_metadata,
         literal_binds=True,
         compare_type=True,
@@ -38,7 +35,7 @@ def run_migrations_offline():
     with context.begin_transaction():
         context.run_migrations()
 
-def run_migrations_online():
+def run_migrations_online() -> None:
     connectable = engine_from_config(
         config.get_section(config.config_ini_section),
         prefix="sqlalchemy.",

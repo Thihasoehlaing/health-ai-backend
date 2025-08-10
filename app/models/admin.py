@@ -1,4 +1,3 @@
-# app/models/admin.py
 import uuid
 from sqlalchemy import Column, String, Index, CheckConstraint, text
 from sqlalchemy.dialects.postgresql import UUID, TIMESTAMP

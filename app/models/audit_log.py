@@ -1,4 +1,3 @@
-# app/models/audit_log.py
 import uuid
 from sqlalchemy import Column, String, ForeignKey, Index, CheckConstraint, text
 from sqlalchemy.dialects.postgresql import UUID, TIMESTAMP, JSONB

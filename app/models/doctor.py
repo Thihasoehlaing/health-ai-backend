@@ -1,4 +1,3 @@
-# app/models/doctor.py
 import uuid
 from sqlalchemy import Column, String, Boolean, ForeignKey, text, Index
 from sqlalchemy.dialects.postgresql import UUID, TIMESTAMP

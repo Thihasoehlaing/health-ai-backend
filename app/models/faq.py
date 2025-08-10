@@ -1,4 +1,3 @@
-# app/models/faq.py
 import uuid
 from sqlalchemy import Column, String, Boolean, Text, Index, text
 from sqlalchemy.dialects.postgresql import UUID, TIMESTAMP

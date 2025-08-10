@@ -1,4 +1,3 @@
-# app/models/kiosk_device.py
 import uuid
 from sqlalchemy import Column, String, Boolean, Index, text
 from sqlalchemy.dialects.postgresql import UUID, TIMESTAMP

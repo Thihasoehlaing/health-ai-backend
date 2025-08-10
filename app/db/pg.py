@@ -1,4 +1,3 @@
-# app/db/pg.py
 from collections.abc import Generator
 from sqlalchemy.orm import DeclarativeBase, sessionmaker, Session
 from sqlalchemy import create_engine
