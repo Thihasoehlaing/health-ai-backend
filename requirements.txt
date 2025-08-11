@@ -8,8 +8,8 @@ psycopg[binary]==3.1.18
 alembic==1.13.1
 
 # Database - MongoDB
-motor==3.5.1
-
+motor>=3.6,<4
+pymongo==4,<5
 # Auth & Security
 passlib[bcrypt]==1.7.4
 python-jose[cryptography]==3.3.0
